@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets": [
+        "src/assets/*"
+      ],
+      "@components": [
+        "src/components/*"
+      ],
+      "@atoms": [
+        "src/components/atoms/index.tsx"
+      ],
+      "@molecules": [
+        "src/components/molecules/index.tsx"
+      ],
+      "@organisms": [
+        "src/components/organisms/index.tsx"
+      ],
+      "@navigations": [
+        "src/navigations/index.tsx"
+      ],
+      "@scenes": [
+        "src/scenes/index.tsx"
+      ],
+      "@services": [
+        "src/services/index.tsx"
+      ],
+      "@styles": [
+        "src/styles/index.tsx"
+      ],
+      "@utils": [
+        "src/utils/index.tsx"
+      ]
+    }
+  }
+}
