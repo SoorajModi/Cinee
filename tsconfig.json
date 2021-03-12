@@ -21,7 +21,7 @@
         "src/components/*"
       ],
       "@atoms": [
-        "src/components/atoms/index.tsx"
+        "src/components/atoms/"
       ],
       "@molecules": [
         "src/components/molecules/index.tsx"
