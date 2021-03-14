@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigator from '@navigations'
+import Navigator from '@navigations';
 
 export default function App() {
   return (

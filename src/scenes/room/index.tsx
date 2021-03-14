@@ -1,1 +1,3 @@
-export { default as RoomScene } from './RoomScene';
+import RoomScene from './RoomScene';
+
+export default RoomScene;
