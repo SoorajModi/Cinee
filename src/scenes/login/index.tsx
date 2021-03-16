@@ -1,1 +1,3 @@
-export { default as LoginScene } from './LoginScene';
+import LoginScene from './LoginScene';
+
+export default LoginScene;

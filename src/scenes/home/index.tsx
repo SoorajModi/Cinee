@@ -1,1 +1,3 @@
-export { default as HomeScene } from './HomeScene';
+import HomeScene from './HomeScene';
+
+export default HomeScene;
