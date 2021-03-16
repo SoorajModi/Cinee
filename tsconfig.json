@@ -39,11 +39,11 @@
         "src/services/index.tsx"
       ],
       "@styles": [
-        "src/styles/index.tsx"
+        "src/styles/index.jsx"
       ],
       "@utils": [
         "src/utils/index.tsx"
-      ]
+      ],
     }
   }
 }
