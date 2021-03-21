@@ -36,7 +36,7 @@
         "src/scenes/index.tsx"
       ],
       "@services": [
-        "src/services/index.tsx"
+        "src/services/index.jsx"
       ],
       "@styles": [
         "src/styles/index.tsx"
