@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from 'firebase';
 import { TextInput, Card, Avatar, Button, Title, Paragraph } from 'react-native-paper';
 
-const LoginForm = () => {
+const LoginForm = ({ emitLoginResult }) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -13,12 +13,14 @@ const LoginForm = () => {
                 // Signed in
                 var user = userCredential.user;
                 console.log("Awh hell yeah")
+                emitLoginResult(true)
                 // ...
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log("yo this is an error my guy")
+                emitLoginResult(false)
             });
     }
 

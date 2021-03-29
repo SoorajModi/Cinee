@@ -1,17 +1,19 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, TouchableHighlight } from 'react-native';
-import firebase from 'firebase';
 import { LoginForm } from '@organisms'
 
 const LoginScene = ({ navigation }) => {
 
+  function navigateHomeOnLogin(loginResult) {
+    if (loginResult == true) {
+      navigation.navigate('Home')
+    }
+  }
+
   return (
     <SafeAreaView>
-      <LoginForm></LoginForm>
-      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
-        <Text>Go to home</Text>
-      </TouchableHighlight>
+      <LoginForm emitLoginResult={navigateHomeOnLogin}></LoginForm>
     </SafeAreaView>
   );
 };
