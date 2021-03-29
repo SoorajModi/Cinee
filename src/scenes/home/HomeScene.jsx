@@ -27,6 +27,6 @@ const HomeScene = () => {
             </TextInput>
         </View>
     );
-}
+};
 
 export default HomeScene;

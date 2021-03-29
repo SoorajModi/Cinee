@@ -1,7 +1,8 @@
 import React from 'react';
-import Navigator from '@navigations'
+// import { useState, useEffect } from 'react';
+import Navigator from '@navigations';
 import firebase from 'firebase';
-import firebaseConfig from './firebaseConfig'
+import firebaseConfig from './firebaseConfig';
 
 firebase.initializeApp(firebaseConfig);
 

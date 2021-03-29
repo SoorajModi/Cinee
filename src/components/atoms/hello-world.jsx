@@ -12,5 +12,3 @@ const HelloWorld = ({ name }) => (
 );
 
 export default HelloWorld;
-
-export default HelloWorld
