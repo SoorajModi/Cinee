@@ -12,7 +12,7 @@ const RouteConfigs = {
   Home: {
     screen: HomeScene,
   },
-  About: {
+  Room: {
     screen: RoomScene,
   },
 };
