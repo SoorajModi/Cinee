@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useState, useEffect } from 'react';
 import Navigator from '@navigations';
 import firebase from 'firebase';
 import firebaseConfig from './firebaseConfig';

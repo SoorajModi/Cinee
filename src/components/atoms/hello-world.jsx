@@ -2,13 +2,13 @@ import React from 'react';
 import { Text } from 'react-native';
 
 const HelloWorld = ({ name }) => (
-    <Text>
-        {' '}
+  <Text>
+    {' '}
     Hello World
-        {name}
+    {name}
     !
-        {' '}
-    </Text>
+    {' '}
+  </Text>
 );
 
 export default HelloWorld;
