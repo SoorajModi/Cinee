@@ -18,25 +18,28 @@ export const setupHighscoreListener = (userId) => {
 
 export const createRoom = (userId) => {
   // set the roomID to this user's ID
+  console.log(userId)
   firebase
     .database()
-    .ref(`rooms/${userId}`)
-    .set({
-      userList: [],
+    .ref(`rooms/${userId}/userLists`)
+    .push({
+      userList: [userId],
     });
-  firebase.database().ref(`rooms/${userId}/userList`).push({
-    user: userId,
-  });
 };
 
-export const joinRoom = (roomId, userId) => {
-  firebase
-    .database()
-    .ref(`rooms/${roomId}/userList`)
+export async function joinRoom(roomId, userId) {
+  const userListRef = firebase.database().ref(`rooms/${roomId}/userLists`).orderByKey().limitToLast(1)
+  const snapshot = await userListRef.once('value')
+  const mostRecentUserListObject = snapshot.val()
+  const userList = Object.values(mostRecentUserListObject)[0]["userList"]
+
+  firebase.database()
+    .ref(`rooms/${roomId}/userLists`)
     .push({
-      user: userId,
+      userList: [...userList, userId],
     });
-};
+
+}
 
 // if there's no way to easily "remember" the room across scenes, we can store that information per user in the DB and fetch it when needed
 
