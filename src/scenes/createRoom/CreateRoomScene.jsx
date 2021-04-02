@@ -18,7 +18,7 @@ const CreateRoomScene = ({ navigation }) => {
 
     function createRoomAndNavigate(uid) {
         createRoom(uid);
-        navigation.navigate('Room', { roomId: uid });
+        navigation.navigate('Browse', { roomId: uid });
     }
 
     // upon creating or joining a room this should navigate to the room scene
