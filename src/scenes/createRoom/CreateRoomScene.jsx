@@ -11,11 +11,6 @@ const CreateRoomScene = ({ navigation }) => {
         setUid(firebase.auth().currentUser.uid);
     });
 
-    useEffect(() => {
-        // this 0 is the UID not a highscore lol. Comment your own code Nathan
-        setupHighscoreListener(0);
-    });
-
     function createRoomAndNavigate(uid) {
         createRoom(uid);
         navigation.navigate('Browse', { roomId: uid });
