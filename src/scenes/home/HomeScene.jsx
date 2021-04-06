@@ -4,11 +4,11 @@ import React from 'react';
 
 const HomeScene = ({ navigation }) => {
     function createRoomAndNavigate() {
-        navigation.navigate('CreateRoom');
+        navigation.navigate('CreateRoom', {});
     }
 
     function joinRoomAndNavigate() {
-        navigation.navigate('JoinRoom');
+        navigation.navigate('JoinRoom', {});
     }
 
     // upon creating or joining a room this should navigate to the room scene

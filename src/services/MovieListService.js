@@ -1,4 +1,5 @@
 import axios from 'axios'
+import firebase from 'firebase';
 
 
 const options = {
@@ -17,7 +18,7 @@ const options = {
         end_year: '2021'
     },
     headers: {
-        'x-rapidapi-key': '',
+        'x-rapidapi-key': 'eb75c3159emshf3f383ca6d962f7p136cf2jsn8014370d2503',
         'x-rapidapi-host': 'unogsng.p.rapidapi.com'
     }
 };
@@ -26,6 +27,13 @@ const options = {
 export async function getMovieList() {
     console.log("Call to getMovieList")
     const res = await axios.request(options)
-    const data = res.data
+    const data = res.data["results"]
     console.log(data)
+
+    // firebase
+    //     .database()
+    //     .ref('MovieListSource')
+    //     .set({
+    //         movies: [...data],
+    //     });
 }

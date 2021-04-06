@@ -1,11 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import firebase from 'firebase';
-import { createRoom, setupHighscoreListener, } from '@services';
+import { useRoomUpdate, createRoom, RoomUpdateContext } from '@services';
 
 const CreateRoomScene = ({ navigation }) => {
     const [uid, setUid] = useState();
+    const updateRoom = useContext(RoomUpdateContext)
+    //use Context to set the value of the room Id
 
     useEffect(() => {
         setUid(firebase.auth().currentUser.uid);
@@ -13,7 +15,10 @@ const CreateRoomScene = ({ navigation }) => {
 
     function createRoomAndNavigate(uid) {
         createRoom(uid);
-        navigation.navigate('Browse', { roomId: uid });
+        updateRoom(uid)
+        // useRoomUpdate(uid)
+        console.log("createRoomScene roomId: " + uid)
+        navigation.navigate('Browse');
     }
 
     // upon creating or joining a room this should navigate to the room scene

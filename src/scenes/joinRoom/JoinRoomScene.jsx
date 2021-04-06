@@ -1,23 +1,20 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import firebase from 'firebase';
-import { joinRoom, setupHighscoreListener, } from '@services';
+import { joinRoom, RoomUpdateContext } from '@services';
 
 const JoinRoomScene = ({ navigation }) => {
-    const [roomId, setRoomId] = useState('');
     const [uid, setUid] = useState();
+    const [roomId, setRoomId] = useState()
+    const updateRoom = useContext(RoomUpdateContext)
 
     useEffect(() => {
         setUid(firebase.auth().currentUser.uid);
     });
 
-    useEffect(() => {
-        // this 0 is the UID not a highscore lol. Comment your own code Nathan
-        setupHighscoreListener(0);
-    });
-
     function joinRoomAndNavigate(roomId, uid) {
+        updateRoom(roomId)
         joinRoom(roomId, uid);
         navigation.navigate('Browse', { roomId });
     }
