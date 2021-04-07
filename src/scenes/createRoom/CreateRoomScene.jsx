@@ -1,27 +1,26 @@
-import {Dimensions, SafeAreaView, StyleSheet, View} from 'react-native';
-import {Button, Title} from 'react-native-paper';
-import React, {useEffect, useState} from 'react';
-import {createRoom, setupHighscoreListener,} from '@services';
-import firebase from 'firebase';
+import React, { useEffect, useState, useContext } from 'react';
+import { Dimensions, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Button, Title } from 'react-native-paper';
+import { getCurrentUid, useRoomUpdate, createRoom, RoomUpdateContext } from '@services';
 
-const ScreenHeight = Dimensions.get("window").height;
-const ScreenWidth = Dimensions.get("window").width;
-
-const CreateRoomScene = ({navigation}) => {
-    const [uid, setUid] = useState('');
-
-    useEffect(() => {
-        // setUid(firebase.auth().currentUser.uid);
-    });
+const CreateRoomScene = ({ navigation }) => {
+    const [uid, setUid] = useState();
+    const updateRoom = useContext(RoomUpdateContext)
+    //use Context to set the value of the room Id
+    
+    const ScreenHeight = Dimensions.get("window").height;
+    const ScreenWidth = Dimensions.get("window").width;
 
     useEffect(() => {
-        // this 0 is the UID not a highscore lol. Comment your own code Nathan
-        setupHighscoreListener(0);
+        setUid(getCurrentUid());
     });
 
     function createRoomAndNavigate(uid) {
         createRoom(uid);
-        navigation.navigate('Browse', { roomId: uid });
+        updateRoom(uid)
+        // useRoomUpdate(uid)
+        console.log("createRoomScene roomId: " + uid)
+        navigation.navigate('Browse');
     }
 
     // upon creating or joining a room this should navigate to the room scene

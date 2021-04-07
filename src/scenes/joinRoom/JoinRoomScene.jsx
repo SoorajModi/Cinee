@@ -1,26 +1,22 @@
-import {Dimensions, SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
-import {Button, Title} from 'react-native-paper';
-import React, {useEffect, useState} from 'react';
-import {joinRoom, setupHighscoreListener,} from '@services';
-
+import { Dimensions, SafeAreaView, StyleSheet, TextInput, View } from 'react-native';
+import { Button, Title } from 'react-native-paper';
+import React, { useEffect, useState, useContext } from 'react';
+import { getCurrentUid, useRoomUpdate, joinRoom, RoomUpdateContext } from '@services';
 const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
-import firebase from 'firebase';
 
 const JoinRoomScene = ({ navigation }) => {
-    const [roomId, setRoomId] = useState('');
     const [uid, setUid] = useState();
+    const [roomId, setRoomId] = useState()
+    // const updateRoom = useContext(RoomUpdateContext)
+    const updateRoom = useRoomUpdate
 
     useEffect(() => {
-        // setUid(firebase.auth().currentUser.uid);
-    });
-
-    useEffect(() => {
-        // this 0 is the UID not a highscore lol. Comment your own code Nathan
-        setupHighscoreListener(0);
+        setUid(getCurrentUid());
     });
 
     function joinRoomAndNavigate(roomId, uid) {
+        updateRoom(roomId)
         joinRoom(roomId, uid);
         navigation.navigate('Browse', { roomId });
     }

@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import {SafeAreaView, View} from 'react-native';
-import {Provider as PaperProvider} from "react-native-paper";
-import {LoginForm} from '@organisms';
+import React, { useEffect } from 'react';
+import { SafeAreaView, View } from 'react-native';
+import { Provider as PaperProvider } from "react-native-paper";
+import { LoginForm } from '@organisms';
 import AppBar from "../../components/appbar";
 
-const LoginScene = ({navigation}) => {
+const LoginScene = ({ navigation }) => {
+
     function navigateHomeOnLogin(loginResult) {
         if (loginResult === true) {
             navigation.navigate('Home');

@@ -8,7 +8,7 @@
         "plugin:react/recommended",
         "airbnb"
     ],
-//    "parser": "@typescript-eslint/parser",
+    //    "parser": "@typescript-eslint/parser",
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,10 +19,24 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react-native"
+        "react-native",
+        "react-hooks",
     ],
     "rules": {
         "import/no-unresolved": 0,
         "import/extensions": 0,
-        "react/jsx-filename-extension": [2, { "extensions": [".js",".jsx", ".ts", ".tsx"] }]}
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-filename-extension": [
+            2,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ]
+    }
 }
