@@ -7,4 +7,6 @@ import BrowseScene from './browse';
 import LikedScene from './liked';
 import MatchesScene from './matches';
 
-export { LoginScene, HomeScene, RoomScene, CreateRoomScene, JoinRoomScene, BrowseScene, LikedScene, MatchesScene };
+export {
+  LoginScene, HomeScene, RoomScene, CreateRoomScene, JoinRoomScene, BrowseScene, LikedScene, MatchesScene,
+};

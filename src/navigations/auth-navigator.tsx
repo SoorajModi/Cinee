@@ -11,7 +11,7 @@ const AuthNavigatorConfig: any = {
 
 const RouteConfigs = {
   Login: {
-    screen: LoginScene
+    screen: LoginScene,
   },
 };
 

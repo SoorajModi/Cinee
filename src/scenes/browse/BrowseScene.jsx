@@ -5,30 +5,31 @@ import { HelloWorld } from '@atoms';
 import { MovieList } from '@organisms';
 import { RoomContext, getMovieListFromFirebase } from '@services'
 
+const ScreenHeight = Dimensions.get('window').height;
+
 const BrowseScene = () => {
-    const [movieList, setMovieList] = useState([])
-    const roomId = useContext(RoomContext)
+  const [movieList, setMovieList] = useState([]);
+  const roomId = useContext(RoomContext);
 
-    useEffect(() => {
-        async function fetchMovieList() {
-            const movies = await getMovieListFromFirebase()
-            console.log(movies)
-            setMovieList(movies)
-        }
-        console.log(roomId)
-        fetchMovieList()
-    }, [])
+  useEffect(() => {
+    async function fetchMovieList() {
+      const movies = await getMovieListFromFirebase();
+      console.log(movies);
+      setMovieList(movies);
+    }
 
-    const ScreenHeight = Dimensions.get("window").height;
+    console.log(roomId);
+    fetchMovieList();
+  }, []);
 
-    return (
-        <SafeAreaView>
-            <AppBar />
-            <View style={{ paddingTop: 0.1 * ScreenHeight }} />
-            <HelloWorld name="TestBrowse" />
-            <MovieList movieList={movieList}></MovieList>
-        </SafeAreaView >
-    );
+  return (
+    <SafeAreaView>
+      <AppBar />
+      <View style={{ paddingTop: 0.1 * ScreenHeight }} />
+      <HelloWorld name="TestBrowse" />
+      <MovieList movieList={movieList} />
+    </SafeAreaView>
+  );
 };
 
 export default BrowseScene;

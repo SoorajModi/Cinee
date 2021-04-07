@@ -8,7 +8,7 @@
         "plugin:react/recommended",
         "airbnb"
     ],
-    //    "parser": "@typescript-eslint/parser",
+//        "parser": "@typescript-eslint/parser",
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
