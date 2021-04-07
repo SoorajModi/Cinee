@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { LoginScene } from '@scenes';
+import { LoginScene, HomeScene } from '@scenes';
 
 // Todo: replace with a proper type
 const AuthNavigatorConfig: any = {
@@ -10,7 +10,9 @@ const AuthNavigatorConfig: any = {
 };
 
 const RouteConfigs = {
-  Login: LoginScene,
+  Login: {
+    screen: LoginScene
+  },
 };
 
 const AuthNavigator = createStackNavigator(RouteConfigs, AuthNavigatorConfig);

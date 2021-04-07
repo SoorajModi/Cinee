@@ -1,6 +1,10 @@
-import { storeHighScore, setupHighscoreListener } from "./FirebaseService";
+import {
+  storeHighScore, setupHighscoreListener, createRoom, joinRoom,
+} from './FirebaseService';
 
 export {
-    storeHighScore,
-    setupHighscoreListener
-}
+  storeHighScore,
+  setupHighscoreListener,
+  createRoom,
+  joinRoom,
+};
