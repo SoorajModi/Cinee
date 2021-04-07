@@ -2,15 +2,16 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import React, { useEffect, useState, useContext } from 'react';
 import firebase from 'firebase';
-import { joinRoom, RoomUpdateContext } from '@services';
+import { getCurrentUid, useRoomUpdate, joinRoom, RoomUpdateContext } from '@services';
 
 const JoinRoomScene = ({ navigation }) => {
     const [uid, setUid] = useState();
     const [roomId, setRoomId] = useState()
-    const updateRoom = useContext(RoomUpdateContext)
+    // const updateRoom = useContext(RoomUpdateContext)
+    const updateRoom = useRoomUpdate
 
     useEffect(() => {
-        setUid(firebase.auth().currentUser.uid);
+        setUid(getCurrentUid());
     });
 
     function joinRoomAndNavigate(roomId, uid) {

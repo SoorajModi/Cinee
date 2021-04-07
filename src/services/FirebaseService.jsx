@@ -1,4 +1,18 @@
 import firebase from 'firebase';
+import firebaseConfig from '../../firebaseConfig';
+
+firebase.initializeApp(firebaseConfig)
+
+const db = firebase.database()
+const auth = firebase.auth();
+const functions = firebase.functions();
+
+if (location.hostname === 'localhost') {
+  db.useEmulator('localhost', 9000);
+  auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
+  functions.useEmulator('http://localhost:5001/')
+}
+
 
 export const createRoom = (userId) => {
   // set the roomID to this user's ID
@@ -14,12 +28,12 @@ export const createRoom = (userId) => {
 
 //TODO: only add to list if unique
 export async function joinRoom(roomId, userId) {
-  const userListRef = firebase.database().ref(`rooms/${roomId}/userLists`).orderByKey().limitToLast(1)
+  const userListRef = db.ref(`rooms/${roomId}/userLists`).orderByKey().limitToLast(1)
   const snapshot = await userListRef.once('value')
   const mostRecentUserListObject = snapshot.val()
   const userList = Object.values(mostRecentUserListObject)[0]["userList"]
 
-  firebase.database()
+  db
     .ref(`rooms/${roomId}/userLists`)
     .push({
       userList: [...userList, userId],
@@ -31,7 +45,7 @@ export async function joinRoom(roomId, userId) {
 function initializeUserMovieList(roomId, userId) {
   var updates = {};
   updates[userId] = [{ title: "testMovie" }];
-  firebase.database()
+  db
     .ref(`rooms/${roomId}/userMovieList`)
     .set(updates);
 }
@@ -39,11 +53,11 @@ function initializeUserMovieList(roomId, userId) {
 async function initializeOnJoinUserMovieList(roomId, userId) {
   var updates = await getAllUserMovieLists(roomId, userId)
   updates[userId] = [{ title: "testMovie" }]
-  firebase.database().ref(`rooms/${roomId}/userMovieList`).set(updates)
+  db.ref(`rooms/${roomId}/userMovieList`).set(updates)
 }
 
 export async function getMovieListFromFirebase() {
-  const ref = await firebase.database().ref('MovieListSource').get()
+  const ref = await db.ref('MovieListSource').get()
   const data = ref.val()["movies"]
   return data
 }
@@ -51,7 +65,7 @@ export async function getMovieListFromFirebase() {
 async function getUserMovieList(roomId, userId) {
   const dbLocation = `rooms/${roomId}/userMovieList`
 
-  const ref = await firebase.database().ref(`rooms/${roomId}/userMovieList`).get()
+  const ref = await db.ref(`rooms/${roomId}/userMovieList`).get()
   const value = ref.val()
   const userMovieList = value[userId]
   return userMovieList
@@ -60,7 +74,7 @@ async function getUserMovieList(roomId, userId) {
 async function getAllUserMovieLists(roomId, userId) {
   const dbLocation = `rooms/${roomId}/userMovieList`
 
-  const ref = await firebase.database().ref(`rooms/${roomId}/userMovieList`).get()
+  const ref = await db.ref(`rooms/${roomId}/userMovieList`).get()
   const value = ref.val()
   return value
 }
@@ -75,7 +89,7 @@ export async function addLikedMovieToRoom(roomId, toAdd) {
   var updates = allUserMovieLists
   updates[userId] = [...userMovieList, toAdd]
 
-  firebase.database().ref(dbLocation).set(updates)
+  db.ref(dbLocation).set(updates)
 }
 
 export async function removeLikedMovieFromRoom(roomId, toRemove) {
@@ -88,7 +102,7 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
   var updates = allUserMovieLists
   updates[userId] = [...userMovieList]
 
-  firebase.database().ref(dbLocation).set(updates)
+  db.ref(dbLocation).set(updates)
 
 }
 
@@ -96,15 +110,15 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
 
 // setup roomListener
 export const setupMutualMovieListListener = (roomId, setMutualMoviesCallback) => {
-  firebase.database().ref(`rooms/${roomId}/mutualMovieList`).on('value', (snapshot) => {
+  db.ref(`rooms/${roomId}/mutualMovieList`).on('value', (snapshot) => {
     const mutualMovieList = snapshot.val();
     console.log(`New high score: ${mutualMovieList}`);
     setMutualMoviesCallback(mutualMovieList)
   });
 };
 
-const getCurrentUid = () => {
-  return firebase.auth().currentUser.uid
+export const getCurrentUid = () => {
+  return auth.currentUser.uid
 }
 
 // Find the intersection of multiple arrays (Used in the cloud function for creating mutual movie list)

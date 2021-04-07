@@ -1,5 +1,5 @@
 import {
-  createRoom, joinRoom, getMovieListFromFirebase, addLikedMovieToRoom, removeLikedMovieFromRoom
+  createRoom, joinRoom, getMovieListFromFirebase, addLikedMovieToRoom, removeLikedMovieFromRoom, getCurrentUid
 } from './FirebaseService';
 
 import {
@@ -19,6 +19,7 @@ export {
   getMovieListFromFirebase,
   addLikedMovieToRoom,
   removeLikedMovieFromRoom,
+  getCurrentUid,
   RoomProvider,
   useRoom,
   useRoomUpdate,

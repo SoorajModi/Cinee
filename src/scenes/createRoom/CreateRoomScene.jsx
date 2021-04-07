@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import React, { useEffect, useState, useContext } from 'react';
 import firebase from 'firebase';
-import { useRoomUpdate, createRoom, RoomUpdateContext } from '@services';
+import { getCurrentUid, useRoomUpdate, createRoom, RoomUpdateContext } from '@services';
 
 const CreateRoomScene = ({ navigation }) => {
     const [uid, setUid] = useState();
@@ -10,7 +10,7 @@ const CreateRoomScene = ({ navigation }) => {
     //use Context to set the value of the room Id
 
     useEffect(() => {
-        setUid(firebase.auth().currentUser.uid);
+        setUid(getCurrentUid());
     });
 
     function createRoomAndNavigate(uid) {

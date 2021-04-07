@@ -4,13 +4,8 @@ import { SafeAreaView } from 'react-native';
 import { Provider as PaperProvider } from "react-native-paper";
 import { LoginForm } from '@organisms';
 import AppBar from "../../components/appbar";
-import { getMovieList, getMovieListFromFirebase } from '@services'
 
 const LoginScene = ({ navigation }) => {
-
-    useEffect(() => {
-        getMovieListFromFirebase()
-    })
 
     function navigateHomeOnLogin(loginResult) {
         if (loginResult === true) {
