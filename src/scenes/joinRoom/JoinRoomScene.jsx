@@ -1,7 +1,10 @@
-import {StyleSheet, TextInput, View} from 'react-native';
+import {Dimensions, SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
 import {Button, Title} from 'react-native-paper';
 import React, {useEffect, useState} from 'react';
-import { joinRoom, setupHighscoreListener,} from '@services';
+import {joinRoom, setupHighscoreListener,} from '@services';
+
+const ScreenHeight = Dimensions.get("window").height;
+const ScreenWidth = Dimensions.get("window").width;
 
 const JoinRoomScene = ({navigation}) => {
     const [roomId, setRoomId] = useState('');
@@ -25,35 +28,44 @@ const JoinRoomScene = ({navigation}) => {
     // upon creating or joining a room this should navigate to the room scene
 
     return (
-        <View style={styles.main}>
+        <SafeAreaView style={styles.main}>
             <Title style={styles.title}>Enter Room Code</Title>
-            <div style={{alignSelf: 'center', minWidth: '50vh', maxWidth: '300vh', marginTop: '15vh'}}>
+            <View style={styles.body}>
                 <TextInput
-                    style={{height: 40, color: '#ffffff', backgroundColor: '#001B30', width: '100%', alignSelf: 'center'}}
+                    style={{
+                        height: 40,
+                        color: '#ffffff',
+                        backgroundColor: '#001B30',
+                        width: '100%',
+                        alignSelf: 'center'
+                    }}
                     placeholder="Enter The Room Code"
                     onChangeText={(roomId) => setRoomId(roomId)}
-                    defaultValue="Enter The Room Code"
                 />
-                <div style={{paddingTop: '2vh'}} />
+                <View style={{paddingTop: 0.02 * ScreenHeight}}/>
                 <Button onPress={() => {
                     joinRoomAndNavigate(roomId, uid);
                 }} mode="contained" color={'#C2BC9C'} labelStyle={{color: "#000000"}}>Join Room</Button>
-            </div>
-        </View>
+            </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     main: {
-        padding: 10,
         backgroundColor: '#39485A',
-        minHeight: '100vh',
-        paddingTop: '20vh',
+        minHeight: 1.5 * ScreenHeight,
+        minWidth: ScreenWidth,
     },
     title: {
         color: '#C2BC9C',
         alignSelf: 'center',
-        fontSize: '68px',
+        fontSize: 35,
+        paddingTop: 0.2 * ScreenHeight,
+    },
+    body: {
+        alignSelf: 'center',
+        marginTop: 0.15 * ScreenHeight
     }
 });
 

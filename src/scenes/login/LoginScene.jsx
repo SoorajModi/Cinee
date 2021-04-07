@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Provider as PaperProvider} from "react-native-paper";
 import {LoginForm} from '@organisms';
 import AppBar from "../../components/appbar";
@@ -16,9 +16,9 @@ const LoginScene = ({navigation}) => {
         <PaperProvider>
             <SafeAreaView>
                 <AppBar/>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                <View style={{display: 'flex', justifyContent: 'center'}}>
                     <LoginForm emitLoginResult={navigateHomeOnLogin}/>
-                </div>
+                </View>
             </SafeAreaView>
         </PaperProvider>
     );

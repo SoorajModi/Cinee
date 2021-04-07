@@ -1,6 +1,9 @@
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Dimensions, Alert} from 'react-native';
 import {Button, Title} from 'react-native-paper';
 import React from 'react';
+
+const ScreenHeight = Dimensions.get("window").height;
+const ScreenWidth = Dimensions.get("window").width;
 
 const HomeScene = ({navigation}) => {
     function createRoomAndNavigate() {
@@ -8,15 +11,19 @@ const HomeScene = ({navigation}) => {
     }
 
     function joinRoomAndNavigate() {
+        console.log("Clicked join room");
         navigation.navigate('JoinRoom');
     }
 
     // upon creating or joining a room this should navigate to the room scene
 
     return (
-        <View style={styles.main}>
-            <Title style={styles.title}>Cinee</Title>
-            <div style={{alignSelf: 'center', minWidth: '50vh', maxWidth: '300vh', marginTop: '15vh'}}>
+        <>
+        <SafeAreaView style={styles.main}>
+            <View>
+                <Title style={styles.title}>Cinee</Title>
+            </View>
+            <View style={styles.body}>
                 <Button onPress={() => {
                     createRoomAndNavigate();
                 }} mode="contained" color={'#001B30'} labelStyle={{color: "#C2BC9C"}}>
@@ -24,31 +31,38 @@ const HomeScene = ({navigation}) => {
                 </Button>
                 <Button onPress={() => {
                     joinRoomAndNavigate();
-                }} mode="contained" color={'#001B30'} style={{marginTop: '2vh'}} labelStyle={{color: "#C2BC9C"}}>
+                }} mode="contained" color={'#001B30'} style={{marginTop: ScreenHeight*0.02}} labelStyle={{color: "#C2BC9C"}}>
                     Join Room
                 </Button>
-            </div>
-        </View>
+            </View>
+         </SafeAreaView>
+         </>
     );
 };
 
 const styles = StyleSheet.create({
     main: {
-        padding: 10,
         backgroundColor: '#39485A',
-        minHeight: '100vh',
-        paddingTop: '20vh',
+        minHeight: 1.5 * ScreenHeight,
+        minWidth: ScreenWidth,
     },
     title: {
+        paddingTop: ScreenHeight*0.2,
         color: '#C2BC9C',
         alignSelf: 'center',
-        fontSize: '96px',
+        fontSize: 50,
+    },
+    body: {
+        alignSelf: 'center',
+        minWidth: ScreenWidth*0.5,
+        maxWidth: ScreenWidth*0.75,
+        marginTop: ScreenHeight*0.15,
     },
     buttons: {
         alignSelf: 'center',
-        minWidth: '50vh',
-        paddingLeft: '5vh',
-        marginRight: '5vh'
+        minWidth: 50,
+        paddingLeft: 5*ScreenWidth,
+        // marginRight: 5*ScreenWidth
     },
 });
 
