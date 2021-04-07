@@ -1,17 +1,17 @@
 import firebase from 'firebase';
 import firebaseConfig from '../../firebaseConfig';
+require('firebase/functions') // this is necessary for fidning firebase.functions() ... pretty sure that's a glitch on their end
 
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.database();
 const auth = firebase.auth();
-// const functions = firebase.functions;
-// firebase.functions.useEmulator
+const functions = firebase.functions();
 
 // if (location.hostname === 'localhost') {
 db.useEmulator('localhost', 9000);
 auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
-// functions.useEmulator('http://localhost:5001/')
+functions.useEmulator('http://localhost:5001/')
 // }
 
 export const createRoom = (userId) => {
