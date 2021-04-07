@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
-import {BrowseScene, LikedScene, RoomScene, MatchesScene} from '@scenes';
+import {BrowseScene, LikedScene, MatchesScene} from '@scenes';
 
 const TabNavigatorConfig = {
     initialRouteName: 'Browse',

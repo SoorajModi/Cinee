@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { SafeAreaView } from 'react-native';
+import {Dimensions, SafeAreaView, View} from 'react-native';
 import AppBar from "../../components/appbar";
 import { HelloWorld } from '@atoms';
 import { MovieList } from '@organisms';
@@ -27,10 +27,14 @@ const BrowseScene = ({ navigation }) => {
         removeLikedMovieFromRoom(roomId, movie)
     }
 
+
+const ScreenHeight = Dimensions.get("window").height;
+
+const BrowseScene = () => {
     return (
         <SafeAreaView>
             <AppBar />
-            {/* <div style={{ paddingTop: '6vh' }} /> */}
+            <View style={{paddingTop: 0.1 * ScreenHeight}}/>
             <HelloWorld name="TestBrowse" />
             <MovieList movieList={movieList}></MovieList>
         </SafeAreaView >
