@@ -7,7 +7,7 @@ import HomeNavigator from "./home-navigator";
 const RootNavigator = createSwitchNavigator(
     {
         Auth: AuthNavigator,
-        // App: AppNavigator,
+        App: AppNavigator,
         Home: HomeNavigator,
     },
     {

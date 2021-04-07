@@ -8,7 +8,7 @@ const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
 
 const CreateRoomScene = ({navigation}) => {
-    const [uid, setUid] = useState();
+    const [uid, setUid] = useState('');
 
     useEffect(() => {
         // setUid(firebase.auth().currentUser.uid);
