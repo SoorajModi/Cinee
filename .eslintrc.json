@@ -8,7 +8,7 @@
         "plugin:react/recommended",
         "airbnb"
     ],
-    //    "parser": "@typescript-eslint/parser",
+//        "parser": "@typescript-eslint/parser",
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
@@ -20,7 +20,7 @@
     "plugins": [
         "@typescript-eslint",
         "react-native",
-        "react-hooks",
+        "react-hooks"
     ],
     "rules": {
         "import/no-unresolved": 0,

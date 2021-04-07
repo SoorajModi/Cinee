@@ -1,26 +1,26 @@
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import {BrowseScene, LikedScene, MatchesScene} from '@scenes';
+import { BrowseScene, LikedScene, MatchesScene } from '@scenes';
 
 const TabNavigatorConfig = {
-    initialRouteName: 'Browse',
-    header: null,
-    headerMode: 'none',
+  initialRouteName: 'Browse',
+  header: null,
+  headerMode: 'none',
 };
 
 const RouteConfigs = {
-    // Room: {
-    //     screen: RoomScene,
-    // },
-    Browse: {
-      screen: BrowseScene,
-    },
-    Liked: {
-        screen: LikedScene,
-    },
-    Matches: {
-        screen: MatchesScene,
-    }
+  // Room: {
+  //     screen: RoomScene,
+  // },
+  Browse: {
+    screen: BrowseScene,
+  },
+  Liked: {
+    screen: LikedScene,
+  },
+  Matches: {
+    screen: MatchesScene,
+  },
 };
 
 const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);

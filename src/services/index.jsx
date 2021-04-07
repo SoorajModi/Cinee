@@ -1,28 +1,27 @@
 import {
-  createRoom, joinRoom, getMovieListFromFirebase, addLikedMovieToRoom, removeLikedMovieFromRoom, getCurrentUid
+    addLikedMovieToRoom,
+    createRoom,
+    getCurrentUid,
+    getMovieListFromFirebase,
+    joinRoom,
+    removeLikedMovieFromRoom,
 } from './FirebaseService';
 
-import {
-  RoomProvider,
-  useRoom,
-  useRoomUpdate,
-  RoomContext,
-  RoomUpdateContext
-} from './RoomContext';
+import {RoomContext, RoomProvider, RoomUpdateContext, useRoom, useRoomUpdate,} from './RoomContext';
 
-import { getMovieList } from './MovieListService'
+import {getMovieList} from './MovieListService';
 
 export {
-  createRoom,
-  joinRoom,
-  getMovieList,
-  getMovieListFromFirebase,
-  addLikedMovieToRoom,
-  removeLikedMovieFromRoom,
-  getCurrentUid,
-  RoomProvider,
-  useRoom,
-  useRoomUpdate,
-  RoomContext,
-  RoomUpdateContext
+    createRoom,
+    joinRoom,
+    getMovieList,
+    getMovieListFromFirebase,
+    addLikedMovieToRoom,
+    removeLikedMovieFromRoom,
+    getCurrentUid,
+    RoomProvider,
+    useRoom,
+    useRoomUpdate,
+    RoomContext,
+    RoomUpdateContext,
 };

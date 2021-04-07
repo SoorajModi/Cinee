@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm';
-import MovieList from './MovieList'
+import MovieList from './MovieList';
 
 export {
   LoginForm,
