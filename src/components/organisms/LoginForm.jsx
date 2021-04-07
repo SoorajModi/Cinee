@@ -33,12 +33,13 @@ const LoginForm = ({ emitLoginResult }) => {
   return (
     <Card style={styles.card}>
       <Card.Title title="Sign on" style={styles.title} titleStyle={{ color: '#C2BC9C' }} />
-      <Card.Content style={{ display: 'flex', justifyContent: 'center' }}>
-        <Paragraph>
+      <Card.Content style={{ display: 'flex', justifyContent: 'center', paddingTop: 0.1*ScreenHeight }}>
+        <Paragraph style={{minWidth: ScreenWidth*0.5}}>
           <TextInput
             label="Email"
             value={email}
             onChangeText={(email) => setEmail(email)}
+            style={{maxWidth: ScreenWidth}}
           />
         </Paragraph>
         <Paragraph style={styles.passwordEntry}>
@@ -46,6 +47,7 @@ const LoginForm = ({ emitLoginResult }) => {
             label="Password"
             value={password}
             onChangeText={(password) => setPassword(password)}
+            style={{maxWidth: ScreenWidth}}
           />
         </Paragraph>
       </Card.Content>
@@ -75,9 +77,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#39485A',
   },
   title: {
+    paddingTop: 0.25*ScreenHeight,
   },
   passwordEntry: {
     paddingTop: 0.02 * ScreenHeight,
+    minWidth: ScreenWidth*0.5
   },
   labelStyle: {
     color: '#C2BC9C',
