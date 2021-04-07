@@ -11,14 +11,12 @@ const HomeScene = ({navigation}) => {
     }
 
     function joinRoomAndNavigate() {
-        console.log("Clicked join room");
         navigation.navigate('JoinRoom');
     }
 
     // upon creating or joining a room this should navigate to the room scene
 
     return (
-        <>
         <SafeAreaView style={styles.main}>
             <View>
                 <Title style={styles.title}>Cinee</Title>
@@ -26,7 +24,7 @@ const HomeScene = ({navigation}) => {
             <View style={styles.body}>
                 <Button onPress={() => {
                     createRoomAndNavigate();
-                }} mode="contained" color={'#001B30'} labelStyle={{color: "#C2BC9C"}}>
+                }} mode="contained" color={'#001B30'} labelStyle={{ color: "#C2BC9C" }}>
                     Create Room
                 </Button>
                 <Button onPress={() => {
@@ -36,7 +34,6 @@ const HomeScene = ({navigation}) => {
                 </Button>
             </View>
          </SafeAreaView>
-         </>
     );
 };
 
@@ -57,6 +54,7 @@ const styles = StyleSheet.create({
         minWidth: ScreenWidth*0.5,
         maxWidth: ScreenWidth*0.75,
         marginTop: ScreenHeight*0.15,
+        fontSize: 96,
     },
     buttons: {
         alignSelf: 'center',

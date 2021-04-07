@@ -2,6 +2,7 @@ import {Dimensions, SafeAreaView, StyleSheet, View} from 'react-native';
 import {Button, Title} from 'react-native-paper';
 import React, {useEffect, useState} from 'react';
 import {createRoom, setupHighscoreListener,} from '@services';
+import firebase from 'firebase';
 
 const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
@@ -11,7 +12,6 @@ const CreateRoomScene = ({navigation}) => {
 
     useEffect(() => {
         // setUid(firebase.auth().currentUser.uid);
-        setUid('');
     });
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const CreateRoomScene = ({navigation}) => {
 
     function createRoomAndNavigate(uid) {
         createRoom(uid);
-        navigation.navigate('Browse', {roomId: uid});
+        navigation.navigate('Browse', { roomId: uid });
     }
 
     // upon creating or joining a room this should navigate to the room scene
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     body: {
         alignSelf: 'center',
         paddingTop: 0.15 * ScreenHeight,
+        fontSize: 96,
     }
 });
 

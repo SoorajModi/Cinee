@@ -5,14 +5,14 @@ import {joinRoom, setupHighscoreListener,} from '@services';
 
 const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
+import firebase from 'firebase';
 
-const JoinRoomScene = ({navigation}) => {
+const JoinRoomScene = ({ navigation }) => {
     const [roomId, setRoomId] = useState('');
     const [uid, setUid] = useState();
 
     useEffect(() => {
         // setUid(firebase.auth().currentUser.uid);
-        setUid('');
     });
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const JoinRoomScene = ({navigation}) => {
 
     function joinRoomAndNavigate(roomId, uid) {
         joinRoom(roomId, uid);
-        navigation.navigate('Browse', {roomId});
+        navigation.navigate('Browse', { roomId });
     }
 
     // upon creating or joining a room this should navigate to the room scene
@@ -32,17 +32,11 @@ const JoinRoomScene = ({navigation}) => {
             <Title style={styles.title}>Enter Room Code</Title>
             <View style={styles.body}>
                 <TextInput
-                    style={{
-                        height: 40,
-                        color: '#ffffff',
-                        backgroundColor: '#001B30',
-                        width: '100%',
-                        alignSelf: 'center'
-                    }}
+                    style={{ height: 40, color: '#ffffff', backgroundColor: '#001B30', width: '100%', alignSelf: 'center' }}
                     placeholder="Enter The Room Code"
                     onChangeText={(roomId) => setRoomId(roomId)}
                 />
-                <View style={{paddingTop: 0.02 * ScreenHeight}}/>
+                <View style={{paddingTop: 0.02 * ScreenHeight}} />
                 <Button onPress={() => {
                     joinRoomAndNavigate(roomId, uid);
                 }} mode="contained" color={'#C2BC9C'} labelStyle={{color: "#000000"}}>Join Room</Button>
@@ -65,7 +59,8 @@ const styles = StyleSheet.create({
     },
     body: {
         alignSelf: 'center',
-        marginTop: 0.15 * ScreenHeight
+        marginTop: 0.15 * ScreenHeight,
+        fontSize: 68,
     }
 });
 
