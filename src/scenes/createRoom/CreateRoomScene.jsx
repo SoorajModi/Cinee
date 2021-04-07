@@ -3,13 +3,13 @@ import { Dimensions, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import { getCurrentUid, useRoomUpdate, createRoom, RoomUpdateContext } from '@services';
 
+const ScreenHeight = Dimensions.get("window").height;
+const ScreenWidth = Dimensions.get("window").width;
+
 const CreateRoomScene = ({ navigation }) => {
     const [uid, setUid] = useState();
     const updateRoom = useContext(RoomUpdateContext)
     //use Context to set the value of the room Id
-    
-    const ScreenHeight = Dimensions.get("window").height;
-    const ScreenWidth = Dimensions.get("window").width;
 
     useEffect(() => {
         setUid(getCurrentUid());
@@ -31,7 +31,7 @@ const CreateRoomScene = ({ navigation }) => {
             <View style={styles.body}>
                 <Button onPress={() => {
                     createRoomAndNavigate(uid);
-                }} mode="contained" color={'#001B30'} labelStyle={{color: "#C2BC9C"}}>Generate Room Code</Button>
+                }} mode="contained" color={'#001B30'} labelStyle={{ color: "#C2BC9C" }}>Generate Room Code</Button>
             </View>
         </SafeAreaView>
     );

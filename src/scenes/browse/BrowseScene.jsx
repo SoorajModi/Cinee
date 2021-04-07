@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {Dimensions, SafeAreaView, View} from 'react-native';
+import { Dimensions, SafeAreaView, View } from 'react-native';
 import AppBar from "../../components/appbar";
 import { HelloWorld } from '@atoms';
 import { MovieList } from '@organisms';
-import { RoomContext, getMovieListFromFirebase, addLikedMovieToRoom, removeLikedMovieFromRoom } from '@services'
+import { RoomContext, getMovieListFromFirebase } from '@services'
 
-const BrowseScene = ({ navigation }) => {
+const BrowseScene = () => {
     const [movieList, setMovieList] = useState([])
     const roomId = useContext(RoomContext)
 
@@ -19,22 +19,12 @@ const BrowseScene = ({ navigation }) => {
         fetchMovieList()
     }, [])
 
-    function setMovieLiked(movie) {
-        addLikedMovieToRoom(roomId, movie)
-    }
+    const ScreenHeight = Dimensions.get("window").height;
 
-    function unlikeMovie(movie) {
-        removeLikedMovieFromRoom(roomId, movie)
-    }
-
-
-const ScreenHeight = Dimensions.get("window").height;
-
-const BrowseScene = () => {
     return (
         <SafeAreaView>
             <AppBar />
-            <View style={{paddingTop: 0.1 * ScreenHeight}}/>
+            <View style={{ paddingTop: 0.1 * ScreenHeight }} />
             <HelloWorld name="TestBrowse" />
             <MovieList movieList={movieList}></MovieList>
         </SafeAreaView >

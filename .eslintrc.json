@@ -20,7 +20,7 @@
     "plugins": [
         "@typescript-eslint",
         "react-native",
-        "react-hooks",
+        "react-hooks"
     ],
     "rules": {
         "import/no-unresolved": 0,
