@@ -1,17 +1,17 @@
 import React from 'react';
-import { Dimensions, SafeAreaView, View } from 'react-native';
-import { HelloWorld } from '@atoms';
+import {Dimensions, SafeAreaView, View} from 'react-native';
+import {HelloWorld} from '@atoms';
 import AppBar from '../../components/appbar';
 
 const ScreenHeight = Dimensions.get('window').height;
 
-const MatchesScene = () => (
-  <SafeAreaView>
-    <AppBar />
-    <View style={styles.main}>
-        <HelloWorld name="TestMatches" />
-    </View>
-  </SafeAreaView>
+const LikedScene = () => (
+    <SafeAreaView>
+        <AppBar/>
+        <View style={styles.main}>
+            <HelloWorld name="TestLiked"/>
+        </View>
+    </SafeAreaView>
 );
 
 const styles = {
@@ -25,4 +25,4 @@ const styles = {
     },
 };
 
-export default MatchesScene;
+export default LikedScene;

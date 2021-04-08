@@ -1,4 +1,4 @@
 // @ts-ignore
-import LikedScene from './likedScene';
+import LikedScene from './LikedScene';
 
 export default LikedScene;

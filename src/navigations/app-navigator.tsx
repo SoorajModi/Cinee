@@ -4,14 +4,9 @@ import { BrowseScene, LikedScene, MatchesScene } from '@scenes';
 
 const TabNavigatorConfig = {
   initialRouteName: 'Browse',
-  header: null,
-  headerMode: 'none',
 };
 
 const RouteConfigs = {
-  // Room: {
-  //     screen: RoomScene,
-  // },
   Browse: {
     screen: BrowseScene,
   },

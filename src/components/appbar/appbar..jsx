@@ -13,7 +13,7 @@ export default AppBar;
 const styles = StyleSheet.create({
   top: {
     backgroundColor: '#001B30',
-    position: 'absolute',
+    position: 'relative',
     left: 0,
     right: 0,
   },
