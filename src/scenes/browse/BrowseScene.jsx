@@ -41,6 +41,7 @@ const BrowseScene = () => {
                     <MovieList movieList={movieList}/>
                     <Card.Actions>
                         <Button
+                            onPress={() => {console.log("User disliked movie")}}
                             mode="contained"
                             color="#C2BC9C"
                             style={{ marginTop: ScreenHeight * 0.02, marginLeft: 10, width: 125 }}
@@ -49,6 +50,7 @@ const BrowseScene = () => {
                             Dislike
                         </Button>
                         <Button
+                            onPress={() => {console.log("User like the movie")}}
                             mode="contained"
                             color="#C2BC9C"
                             style={{ marginTop: ScreenHeight * 0.02, marginLeft: 10, width: 125 }}

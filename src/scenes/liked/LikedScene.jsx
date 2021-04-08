@@ -1,15 +1,30 @@
 import React from 'react';
 import {Dimensions, SafeAreaView, View} from 'react-native';
-import {HelloWorld} from '@atoms';
 import AppBar from '../../components/appbar';
+import MediaCard from "./MediaCard";
 
 const ScreenHeight = Dimensions.get('window').height;
+
+const Movies = [
+    {
+        title: 'Movie 1',
+    },
+    {
+        title: 'Movie 2',
+    },
+    {
+        title: 'Movie 3',
+    }
+];
 
 const LikedScene = () => (
     <SafeAreaView>
         <AppBar/>
         <View style={styles.main}>
-            <HelloWorld name="TestLiked"/>
+            <MediaCard />
+            <MediaCard style={{marginTop: 10}} />
+            <MediaCard />
+            <MediaCard />
         </View>
     </SafeAreaView>
 );
