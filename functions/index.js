@@ -36,7 +36,7 @@ exports.updateMutualMovieList = functions.database.ref('rooms/{roomId}/userMovie
     // You must return a Promise when performing asynchronous tasks inside a Functions such as
     // writing to the Firebase Realtime Database.
     // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
-    return db.ref(`rooms/${context.params.roomId}/mutualMovieList`).set({ testing: "test value" });
+    return db.ref(`rooms/${context.params.roomId}/mutualMovieList`).set(mutualMovieList);
   });
 
 // Find the intersection of multiple arrays (Used in the cloud function for creating mutual movie list)

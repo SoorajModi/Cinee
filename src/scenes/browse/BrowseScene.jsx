@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Dimensions, SafeAreaView, View} from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Dimensions, SafeAreaView, View } from 'react-native';
 import AppBar from "../../components/appbar";
-import {HelloWorld} from '@atoms';
-import {MovieList} from '@organisms';
-import {getMovieListFromFirebase, RoomContext} from '@services'
-import {Button, Card, Paragraph} from "react-native-paper";
+import { HelloWorld } from '@atoms';
+import { MovieList } from '@organisms';
+import { getMovieListFromFirebase, RoomContext } from '@services'
+import { Button, Card, Paragraph } from "react-native-paper";
 
 const ScreenHeight = Dimensions.get('window').height;
 
@@ -18,19 +18,17 @@ const BrowseScene = () => {
             console.log(movies);
             setMovieList(movies);
         }
-
-        console.log(roomId);
         fetchMovieList().then(r => r).catch();
     }, []);
 
     return (
         <SafeAreaView>
-            <AppBar/>
+            <AppBar />
             <View style={styles.main}>
                 <Card style={styles.card}>
                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                    <Card.Title title="Card Title" subtitle="Card Subtitle" titleStyle={styles.white} subtitleStyle={styles.white}/>
-                    <Paragraph style={styles.cardContents}><HelloWorld name="TestBrowse"/></Paragraph>
+                    <Card.Title title="Card Title" subtitle="Card Subtitle" titleStyle={styles.white} subtitleStyle={styles.white} />
+                    <Paragraph style={styles.cardContents}><HelloWorld name="TestBrowse" /></Paragraph>
                     <Paragraph style={styles.cardContents}>Type: movie</Paragraph>
                     <Paragraph style={styles.cardContents}>Starring: actor</Paragraph>
                     <Paragraph style={styles.cardContents}>Genres: genre</Paragraph>
@@ -38,10 +36,10 @@ const BrowseScene = () => {
                     <Paragraph style={styles.cardContents}>Platforms: Platform</Paragraph>
                     <Paragraph style={styles.cardContents}>Tags: tag</Paragraph>
                     <Paragraph style={styles.cardContents}>Description: description</Paragraph>
-                    <MovieList movieList={movieList}/>
+                    <MovieList movieList={movieList} />
                     <Card.Actions>
                         <Button
-                            onPress={() => {console.log("User disliked movie")}}
+                            onPress={() => { console.log("User disliked movie") }}
                             mode="contained"
                             color="#C2BC9C"
                             style={{ marginTop: ScreenHeight * 0.02, marginLeft: 10, width: 125 }}
@@ -50,7 +48,7 @@ const BrowseScene = () => {
                             Dislike
                         </Button>
                         <Button
-                            onPress={() => {console.log("User like the movie")}}
+                            onPress={() => { console.log("User like the movie") }}
                             mode="contained"
                             color="#C2BC9C"
                             style={{ marginTop: ScreenHeight * 0.02, marginLeft: 10, width: 125 }}

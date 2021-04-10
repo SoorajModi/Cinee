@@ -62,12 +62,13 @@ export async function getMovieListFromFirebase() {
   return data;
 }
 
-async function getUserMovieList(roomId, userId) {
+export async function getUserMovieList(roomId, userId) {
   const dbLocation = `rooms/${roomId}/userMovieList`;
 
   const ref = await db.ref(`rooms/${roomId}/userMovieList`).get();
   const value = ref.val();
   const userMovieList = value[userId];
+  console.log(userMovieList)
   return userMovieList;
 }
 
@@ -110,11 +111,26 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
 // setup roomListener
 export const setupMutualMovieListListener = (roomId, setMutualMoviesCallback) => {
   db.ref(`rooms/${roomId}/mutualMovieList`).on('value', (snapshot) => {
+    console.log(snapshot.val())
     const mutualMovieList = snapshot.val();
-    console.log(`New high score: ${mutualMovieList}`);
     setMutualMoviesCallback(mutualMovieList);
   });
 };
+
+export const setupUserMovieListListener = (roomId, setUserMovieListCallBack) => {
+  const uid = getCurrentUid()
+  db.ref(`rooms/${roomId}/userMovieList/${uid}`).on('value', (snapshot) => {
+    const userMovieList = snapshot.val();
+    setUserMovieListCallBack(userMovieList);
+  });
+};
+
+
+// var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+// starCountRef.on('value', (snapshot) => {
+//   const data = snapshot.val();
+//   updateStarCount(postElement, data);
+// });
 
 export const getCurrentUid = () => auth.currentUser.uid;
 

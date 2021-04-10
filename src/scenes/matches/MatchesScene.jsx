@@ -1,28 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
-import { HelloWorld } from '@atoms';
 import AppBar from '../../components/appbar';
+import { MovieList } from '@organisms'
+import { RoomContext, setupMutualMovieListListener } from '@services'
 
 const ScreenHeight = Dimensions.get('window').height;
 
-const MatchesScene = () => (
-  <SafeAreaView>
-    <AppBar />
-    <View style={styles.main}>
-        <HelloWorld name="TestMatches" />
-    </View>
-  </SafeAreaView>
-);
+const MatchesScene = () => {
+  const [movieList, setMovieList] = useState([])
+  const roomId = useContext(RoomContext)
+
+  useEffect(() => {
+    setupMutualMovieListListener(roomId, setMovieList)
+  }, []);
+
+  return (
+    <SafeAreaView>
+      <AppBar />
+      <View style={styles.main}>
+        <MovieList movieList={movieList}></MovieList>
+      </View>
+    </SafeAreaView>
+  )
+};
 
 const styles = {
-    main: {
-        backgroundColor: '#39485A',
-        minHeight: 1.5 * ScreenHeight,
-        paddingTop: 0.05 * ScreenHeight,
-        paddingBottom: 0.05 * ScreenHeight,
-        paddingLeft: 15,
-        paddingRight: 15,
-    },
+  main: {
+    backgroundColor: '#39485A',
+    minHeight: 1.5 * ScreenHeight,
+    paddingTop: 0.05 * ScreenHeight,
+    paddingBottom: 0.05 * ScreenHeight,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
 };
 
 export default MatchesScene;
