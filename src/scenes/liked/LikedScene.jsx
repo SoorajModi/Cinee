@@ -8,12 +8,12 @@ import { MovieList } from '@organisms'
 const ScreenHeight = Dimensions.get('window').height;
 
 const LikedScene = () => {
-    const [movieList, setMovieList] = useState([])
-    const roomId = useContext(RoomContext)
+    const [movieList, setMovieList] = useState([]);
+    const roomId = useContext(RoomContext);
 
     useEffect(() => {
         setupUserMovieListListener(roomId, setMovieList)
-    }, [])
+    }, []);
 
     return (
         < SafeAreaView >

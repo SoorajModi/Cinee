@@ -1,6 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import { getMovieListFromFirebase, RoomContext } from '@services'
-import { BrowseCard } from '@molecules';
+import {getMovieListFromFirebase, RoomContext} from '@services'
+import {BrowseCard} from '@molecules';
+import {Dimensions, ScrollView} from "react-native";
+
+const ScreenHeight = Dimensions.get('window').height;
 
 const BrowseList = () => {
     const [movieList, setMovieList] = useState([]);
@@ -12,16 +15,26 @@ const BrowseList = () => {
             console.log(movies);
             setMovieList(movies);
         }
-        fetchMovieList().then(r => r).catch();
+
+        fetchMovieList().then(r => r).catch(() => {});
     }, []);
 
-  return (
-      <>
-          {
-              movieList.map((movie) => (
-                  <BrowseCard movie={movie}/>
-              ))
-          }
-      </>
+    return (
+        <ScrollView style={styles}>
+            {
+                movieList.map((movie) => (
+                    <BrowseCard movie={movie} roomId={roomId}/>
+                ))
+            }
+        </ScrollView>
     );
 };
+
+const styles = {
+    backgroundColor: '#39485A',
+    minHeight: 1.5 * ScreenHeight,
+    paddingLeft: 15,
+    paddingRight: 15,
+};
+
+export default BrowseList;

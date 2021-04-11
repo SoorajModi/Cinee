@@ -4,14 +4,14 @@ import {Dimensions} from "react-native";
 
 const ScreenHeight = Dimensions.get('window').height;
 
-const DislikeBtn = ({movie}) => {
-    function dislike(movie) {
-        console.log("User disliked movie");
+const DislikeBtn = ({movie, roomId}) => {
+    function dislike(movie, roomId) {
+        console.log("User disliked " + movie + " in room " + roomId);
     }
 
     return (
         <Button
-            onPress={() => dislike(movie)}
+            onPress={() => dislike(movie, roomId)}
             mode="contained"
             color="#C2BC9C"
             style={{marginTop: ScreenHeight * 0.02, marginLeft: 10, width: 125}}
