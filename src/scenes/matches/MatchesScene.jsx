@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
 import { AppBar } from '@molecules';
-import { MovieList } from '@organisms'
+import { LikedList } from '@organisms'
 import { RoomContext, setupMutualMovieListListener } from '@services'
 import { Card, Title, Paragraph } from 'react-native-paper';
 
@@ -21,10 +21,10 @@ const MatchesScene = () => {
       <AppBar />
       <View style={styles.main}>
         {isPopulated ? (
-          <MovieList movieList={movieList} />
+          <LikedList movieList={movieList} />
         ) : (
           <Card>
-            <Card.Title title="No Matches Found"></Card.Title>
+            <Card.Title title="No Matches Found!"></Card.Title>
           </Card>
         )}
       </View>

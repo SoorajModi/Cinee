@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
-import { AppBar } from '../../components/molecules';
-import MediaCard from "./MediaCard";
-import { RoomContext, setupUserMovieListListener } from '@services'
-import { MovieList } from '@organisms'
+import { AppBar, LikedCard } from '@molecules';
+import { LikedList } from '@organisms'
 import { Card, Title, Paragraph } from 'react-native-paper';
+import { RoomContext, setupUserMovieListListener } from '@services'
 
 const ScreenHeight = Dimensions.get('window').height;
 
@@ -22,7 +21,7 @@ const LikedScene = () => {
             <AppBar />
             <View style={styles.main}>
                 {isPopulated ? (
-                    <MovieList movieList={movieList} />
+                    <LikedList movieList={movieList} />
                 ) : (
                     <Card>
                         <Card.Title title="No Movies Liked"></Card.Title>

@@ -1,14 +1,14 @@
-import {MovieCard} from '@molecules';
+import { LikedCard } from '@molecules';
 import React from 'react';
-import {Dimensions, ScrollView} from "react-native";
+import { Dimensions, ScrollView } from "react-native";
 
 const ScreenHeight = Dimensions.get('window').height;
 
-const LikedList = ({movieList}) => (
+const LikedList = ({ movieList }) => (
     <ScrollView style={styles}>
         {
             movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie}/>
+                <LikedCard key={movie.id} movie={movie} />
             ))
         }
     </ScrollView>
