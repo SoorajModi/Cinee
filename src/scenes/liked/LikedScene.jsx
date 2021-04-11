@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
-import AppBar from '../../components/appbar';
+import { AppBar } from '../../components/molecules';
 import MediaCard from "./MediaCard";
 import { RoomContext, setupUserMovieListListener } from '@services'
 import { MovieList } from '@organisms'
