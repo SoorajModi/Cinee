@@ -1,9 +1,7 @@
 import React from "react";
 import { Card } from "react-native-paper";
 import { Dimensions } from "react-native";
-import CardText from "./CardText";
-import DislikeBtn from "./DislikeBtn";
-import LikeBtn from "./LikeBtn";
+import { LikeBtn, DislikeBtn, CardText } from '@atoms';
 
 const ScreenHeight = Dimensions.get('window').height;
 
