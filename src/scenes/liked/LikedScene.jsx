@@ -28,11 +28,6 @@ const LikedScene = () => {
                         <Card.Title title="No Movies Liked"></Card.Title>
                     </Card>
                 )}
-                {/* {
-                    movieList.map((movie) => (
-                        <MediaCard style={{ marginTop: 10 }} />
-                    ))
-                } */}
             </View>
         </  SafeAreaView>
 

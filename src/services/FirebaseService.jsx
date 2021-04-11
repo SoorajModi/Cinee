@@ -98,7 +98,7 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
   const userId = getCurrentUid();
   const dbLocation = `rooms/${roomId}/userMovieList`;
   var userMovieList = await getUserMovieList(roomId, getCurrentUid());
-  var userMovieList = userMovieList.filter((movie) => JSON.stringify(movie) !== JSON.stringify(toRemove));
+  var userMovieList = userMovieList != null ? userMovieList.filter((movie) => JSON.stringify(movie) !== JSON.stringify(toRemove)) : []
   const allUserMovieLists = await getAllUserMovieLists(roomId, userId);
 
   const updates = allUserMovieLists;
@@ -107,9 +107,6 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
   db.ref(dbLocation).set(updates);
 }
 
-// if there's no way to easily "remember" the room across scenes, we can store that information per user in the DB and fetch it when needed
-
-// setup roomListener
 export const setupMutualMovieListListener = (roomId, setMutualMoviesCallback) => {
   db.ref(`rooms/${roomId}/mutualMovieList`).on('value', (snapshot) => {
     console.log(snapshot.val())
@@ -122,29 +119,12 @@ export const setupUserMovieListListener = (roomId, setUserMovieListCallBack) => 
   const uid = getCurrentUid()
   db.ref(`rooms/${roomId}/userMovieList/${uid}`).on('value', (snapshot) => {
     var userMovieList = snapshot.val();
-    userMovieList = userMovieList.filter(a => a.title !== "testMovie")
+    userMovieList = userMovieList != null ? userMovieList.filter(a => a.title !== "testMovie") : []
     setUserMovieListCallBack(userMovieList);
   });
 };
 
-
-// var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
-// starCountRef.on('value', (snapshot) => {
-//   const data = snapshot.val();
-//   updateStarCount(postElement, data);
-// });
-
 export const getCurrentUid = () => auth.currentUser.uid;
-
-// Find the intersection of multiple arrays (Used in the cloud function for creating mutual movie list)
-// var array1 = ["Lorem", "ipsum", "dolor"],
-//     array2 = ["Lorem", "ipsum", "quick", "brown", "foo"],
-//     array3 = ["Jumps", "Over", "Lazy", "Lorem"],
-//     array4 = [1337, 420, 666, "Lorem"],
-//     data = [array1, array2, array3, array4],
-//     result = data.reduce((a, b) => a.filter(c => b.includes(c)));
-
-// console.log(result);
 
 // leave room function
 

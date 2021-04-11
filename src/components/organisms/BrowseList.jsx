@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
-import {getMovieListFromFirebase, RoomContext} from '@services'
-import {BrowseCard} from '@molecules';
-import {Dimensions, ScrollView} from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { getMovieListFromFirebase, RoomContext } from '@services'
+import { BrowseCard } from '@molecules';
+import { Dimensions, ScrollView } from "react-native";
 
 const ScreenHeight = Dimensions.get('window').height;
 
@@ -11,19 +11,25 @@ const BrowseList = () => {
 
     useEffect(() => {
         async function fetchMovieList() {
-            const movies = await getMovieListFromFirebase();
-            console.log(movies);
-            setMovieList(movies);
+            try {
+                const movies = await getMovieListFromFirebase();
+                console.log(movies);
+                setMovieList(movies);
+
+            } catch {
+                console.log("Something went wrong! No movies listed.")
+                setMovieList([])
+            }
         }
 
-        fetchMovieList().then(r => r).catch(() => {});
+        fetchMovieList().then(r => r).catch(() => { });
     }, []);
 
     return (
         <ScrollView style={styles}>
             {
                 movieList.map((movie) => (
-                    <BrowseCard movie={movie} roomId={roomId}/>
+                    <BrowseCard key={movie.id} movie={movie} roomId={roomId} />
                 ))
             }
         </ScrollView>
