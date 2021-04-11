@@ -8,17 +8,13 @@ import LikeBtn from "./LikeBtn";
 const ScreenHeight = Dimensions.get('window').height;
 
 const BrowseCard = ({ movie, roomId }) => {
+    const src = { uri: movie.img }
     return (
         <Card style={styles.card}>
-            {/* <Card.Cover source={movie.img} /> */}
+            <Card.Cover source={src} />
             <Card.Title title={movie.title} subtitle={`Rating: ${movie.avgrating}`} titleStyle={styles.white}
                 subtitleStyle={styles.white} />
             <CardText text={movie.synopsis.replace("&#39;", "'")} />
-            {/* <CardText text={"Starring: actor"} />
-            <CardText text={"Genres: genre"} />
-            <CardText text={"Release: release"} />
-            <CardText text={"Platform: platform"} />
-            <CardText text={"Description: description"} /> */}
             <Card.Actions>
                 <DislikeBtn movie={movie} roomId={roomId} />
                 <LikeBtn movie={movie} roomId={roomId} />
