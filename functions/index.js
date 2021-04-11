@@ -26,7 +26,9 @@ exports.updateMutualMovieList = functions.database.ref('rooms/{roomId}/userMovie
     const userMovieLists = snapshot.after.val();
     const lists = Object.values(userMovieLists)
     functions.logger.log('lists', lists)
-    mutualMovieList = lists.reduce((a, b) => a.filter(c => b.some(movie => movie.title === c.title)));
+    var mutualMovieList = lists.reduce((a, b) => a.filter(c => b.some(movie => movie.title === c.title)));
+    //because firebase requires that each node have some data, testMovie populates every list
+    mutualMovieList = mutualMovieList.filter(a => a.title !== "testMovie")
     functions.logger.log('mutual', mutualMovieList)
     // functions.logger.log('movieList testing', context.params, userMovieLists)
     // for (const [key, value] of Object.entries(userMovieLists)) {

@@ -67,7 +67,8 @@ export async function getUserMovieList(roomId, userId) {
 
   const ref = await db.ref(`rooms/${roomId}/userMovieList`).get();
   const value = ref.val();
-  const userMovieList = value[userId];
+  var userMovieList = value[userId];
+  userMovieList = userMovieList.filter(a => a.title !== "testMovie")
   console.log(userMovieList)
   return userMovieList;
 }
@@ -120,7 +121,8 @@ export const setupMutualMovieListListener = (roomId, setMutualMoviesCallback) =>
 export const setupUserMovieListListener = (roomId, setUserMovieListCallBack) => {
   const uid = getCurrentUid()
   db.ref(`rooms/${roomId}/userMovieList/${uid}`).on('value', (snapshot) => {
-    const userMovieList = snapshot.val();
+    var userMovieList = snapshot.val();
+    userMovieList = userMovieList.filter(a => a.title !== "testMovie")
     setUserMovieListCallBack(userMovieList);
   });
 };
