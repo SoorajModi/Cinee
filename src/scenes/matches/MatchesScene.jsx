@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
-import AppBar from '../../components/appbar';
+import { AppBar } from '@molecules';
 import { MovieList } from '@organisms'
 import { RoomContext, setupMutualMovieListListener } from '@services'
 import { Card, Title, Paragraph } from 'react-native-paper';

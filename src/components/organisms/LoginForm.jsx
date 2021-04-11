@@ -24,6 +24,7 @@ const LoginForm = ({emitLoginResult}) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log('yo this is an error my guy');
+                console.log(error.message);
                 emitLoginResult(false);
             });
     }

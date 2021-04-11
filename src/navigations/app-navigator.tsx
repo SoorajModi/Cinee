@@ -13,9 +13,9 @@ const RouteConfigs = {
   Liked: {
     screen: LikedScene,
   },
-  Matches: {
-    screen: MatchesScene,
-  },
+  // Matches: {
+  //   screen: MatchesScene,
+  // },
 };
 
 const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);

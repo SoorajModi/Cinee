@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { LoginForm } from '@organisms';
-import AppBar from '../../components/appbar';
+import AppBar from '../../components/molecules/appbar';
 
 const LoginScene = ({ navigation }) => {
   function navigateHomeOnLogin(loginResult) {
