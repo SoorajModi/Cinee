@@ -1,12 +1,18 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { Appbar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import { RoomContext } from '@services'
 
-const AppBar = () => (
-  <Appbar style={styles.top}>
-    <Appbar.Content title="Cinee" color="#C2BC9C" style={styles.title} />
-  </Appbar>
-);
+const AppBar = () => {
+  const roomId = useContext(RoomContext)
+
+  return (
+    <Appbar style={styles.top}>
+      <Appbar.Content title="Cinee" color="#C2BC9C" style={styles.title} />
+    </Appbar>
+
+  )
+};
 
 export default AppBar;
 
