@@ -8,12 +8,12 @@ import { RoomContext, setupUserMovieListListener } from '@services'
 const ScreenHeight = Dimensions.get('window').height;
 
 const LikedScene = () => {
-    const [movieList, setMovieList] = useState([])
-    const roomId = useContext(RoomContext)
-    const isPopulated = movieList != null && movieList != undefined && movieList.length != 0
+    const [movieList, setMovieList] = useState([]);
+    const roomId = useContext(RoomContext);
+    const isPopulated = movieList != null && true && movieList.length !== 0;
 
     useEffect(() => {
-        setupUserMovieListListener(roomId, setMovieList)
+        setupUserMovieListListener(roomId, setMovieList)  // TODO: UNCOMMENT THIS!!!!!!
     }, []);
 
     return (
@@ -24,7 +24,7 @@ const LikedScene = () => {
                     <LikedList movieList={movieList} />
                 ) : (
                     <Card>
-                        <Card.Title title="No Movies Liked"></Card.Title>
+                        <Card.Title title="No Movies Liked"/>
                     </Card>
                 )}
             </View>

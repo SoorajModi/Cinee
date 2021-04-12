@@ -4,13 +4,12 @@ import { StyleSheet } from 'react-native';
 import { RoomContext } from '@services'
 
 const AppBar = () => {
-  const roomId = useContext(RoomContext)
+  const roomId = useContext(RoomContext);
 
   return (
     <Appbar style={styles.top}>
-      <Appbar.Content title="Cinee" color="#C2BC9C" style={styles.title} />
+      <Appbar.Content title="Cinee" subtitle={roomId} color="#C2BC9C" style={styles.title} />
     </Appbar>
-
   )
 };
 

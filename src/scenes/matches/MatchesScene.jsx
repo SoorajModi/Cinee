@@ -24,7 +24,7 @@ const MatchesScene = () => {
           <MatchesList movieList={movieList} />
         ) : (
           <Card>
-            <Card.Title title="No Matches Found!"/>
+            <Card.Title title="No Matches Found!" color="#C2BC9C" style={styles.title}/>
           </Card>
         )}
       </View>

@@ -1,14 +1,14 @@
-import { MatchCard } from '@molecules';
+import {MatchCard} from '@molecules';
 import React from 'react';
-import { Dimensions, ScrollView } from "react-native";
+import {Dimensions, ScrollView} from "react-native";
 
 const ScreenHeight = Dimensions.get('window').height;
 
-const MatchesList = ({ movieList }) => (
+const MatchesList = ({movieList}) => (
     <ScrollView style={styles}>
         {
             movieList.map((movie) => (
-                <MatchCard key={movie.id} movie={movie} />
+                <MatchCard key={movie.id} movie={movie}/>
             ))
         }
     </ScrollView>
