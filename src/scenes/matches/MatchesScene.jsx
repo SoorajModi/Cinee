@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, SafeAreaView, View } from 'react-native';
 import { AppBar } from '@molecules';
-import { MatchesList } from '@organisms'
-import { RoomContext, setupMutualMovieListListener } from '@services'
+import { MatchesList } from '@organisms';
+import { RoomContext, setupMutualMovieListListener } from '@services';
 import { Card } from 'react-native-paper';
 
 const ScreenHeight = Dimensions.get('window').height;
@@ -13,7 +13,7 @@ const MatchesScene = () => {
   const isPopulated = movieList != null && true && movieList.length !== 0;
 
   useEffect(() => {
-    setupMutualMovieListListener(roomId, setMovieList)
+    setupMutualMovieListListener(roomId, setMovieList);
   }, []);
 
   return (
@@ -24,12 +24,12 @@ const MatchesScene = () => {
           <MatchesList movieList={movieList} />
         ) : (
           <Card>
-            <Card.Title title="No Matches Found!" color="#C2BC9C" style={styles.title}/>
+            <Card.Title title="No Matches Found!" color="#C2BC9C" style={styles.title} />
           </Card>
         )}
       </View>
     </SafeAreaView>
-  )
+  );
 };
 
 const styles = {

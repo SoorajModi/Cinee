@@ -1,3 +1,3 @@
-import BrowseCard from "./BrowseCard";
+import BrowseCard from './BrowseCard';
 
 export default BrowseCard;

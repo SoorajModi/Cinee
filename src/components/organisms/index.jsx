@@ -7,5 +7,5 @@ export {
   LoginForm,
   BrowseList,
   LikedList,
-  MatchesList
+  MatchesList,
 };

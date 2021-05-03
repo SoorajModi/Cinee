@@ -1,3 +1,3 @@
-import LikedCard from "./LikedCard";
+import LikedCard from './LikedCard';
 
 export default LikedCard;

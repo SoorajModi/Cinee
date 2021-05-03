@@ -13,7 +13,7 @@ const ScreenWidth = Dimensions.get('window').width;
 const JoinRoomScene = ({ navigation }) => {
   const [uid, setUid] = useState();
   const [roomId, setRoomId] = useState();
-  const updateRoom = useContext(RoomUpdateContext)
+  const updateRoom = useContext(RoomUpdateContext);
   // const updateRoom = useRoomUpdate;
 
   useEffect(() => {

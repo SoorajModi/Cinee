@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import firebaseConfig from '../../firebaseConfig';
-require('firebase/functions') // this is necessary for fidning firebase.functions() ... pretty sure that's a glitch on their end
+
+require('firebase/functions'); // this is necessary for fidning firebase.functions() ... pretty sure that's a glitch on their end
 
 firebase.initializeApp(firebaseConfig);
 
@@ -11,7 +12,7 @@ const functions = firebase.functions();
 // if (location.hostname === 'localhost') {
 db.useEmulator('localhost', 9000);
 auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
-functions.useEmulator('http://localhost:5001/')
+functions.useEmulator('http://localhost:5001/');
 // }
 
 export const createRoom = (userId) => {
@@ -67,9 +68,9 @@ export async function getUserMovieList(roomId, userId) {
 
   const ref = await db.ref(`rooms/${roomId}/userMovieList`).get();
   const value = ref.val();
-  var userMovieList = value[userId];
-  userMovieList = userMovieList.filter(a => a.title !== "testMovie")
-  console.log(userMovieList)
+  let userMovieList = value[userId];
+  userMovieList = userMovieList.filter((a) => a.title !== 'testMovie');
+  console.log(userMovieList);
   return userMovieList;
 }
 
@@ -97,8 +98,8 @@ export async function addLikedMovieToRoom(roomId, toAdd) {
 export async function removeLikedMovieFromRoom(roomId, toRemove) {
   const userId = getCurrentUid();
   const dbLocation = `rooms/${roomId}/userMovieList`;
-  var userMovieList = await getUserMovieList(roomId, getCurrentUid());
-  var userMovieList = userMovieList != null ? userMovieList.filter((movie) => JSON.stringify(movie) !== JSON.stringify(toRemove)) : []
+  let userMovieList = await getUserMovieList(roomId, getCurrentUid());
+  userMovieList = userMovieList != null ? userMovieList.filter((movie) => JSON.stringify(movie) !== JSON.stringify(toRemove)) : [];
   const allUserMovieLists = await getAllUserMovieLists(roomId, userId);
 
   const updates = allUserMovieLists;
@@ -109,17 +110,17 @@ export async function removeLikedMovieFromRoom(roomId, toRemove) {
 
 export const setupMutualMovieListListener = (roomId, setMutualMoviesCallback) => {
   db.ref(`rooms/${roomId}/mutualMovieList`).on('value', (snapshot) => {
-    console.log(snapshot.val())
+    console.log(snapshot.val());
     const mutualMovieList = snapshot.val();
     setMutualMoviesCallback(mutualMovieList);
   });
 };
 
 export const setupUserMovieListListener = (roomId, setUserMovieListCallBack) => {
-  const uid = getCurrentUid()
+  const uid = getCurrentUid();
   db.ref(`rooms/${roomId}/userMovieList/${uid}`).on('value', (snapshot) => {
-    var userMovieList = snapshot.val();
-    userMovieList = userMovieList != null ? userMovieList.filter(a => a.title !== "testMovie") : []
+    let userMovieList = snapshot.val();
+    userMovieList = userMovieList != null ? userMovieList.filter((a) => a.title !== 'testMovie') : [];
     setUserMovieListCallBack(userMovieList);
   });
 };

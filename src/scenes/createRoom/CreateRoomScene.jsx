@@ -7,8 +7,8 @@ import {
   getCurrentUid, useRoomUpdate, createRoom, RoomUpdateContext,
 } from '@services';
 
-const ScreenHeight = Dimensions.get("window").height;
-const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
 
 const CreateRoomScene = ({ navigation }) => {
   const [uid, setUid] = useState();

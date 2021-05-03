@@ -16,8 +16,8 @@ const options = {
     end_year: '2021',
   },
   headers: {
-    'x-rapidapi-key': 'eb75c3159emshf3f383ca6d962f7p136cf2jsn8014370d2503',
-    'x-rapidapi-host': 'unogsng.p.rapidapi.com',
+    'x-rapidapi-key': 'API_KEY',
+    'x-rapidapi-host': 'AOI_HOST',
   },
 };
 
